@@ -1,3 +1,4 @@
+import cProfile
 import string
 import redis
 import multiprocessing as mp
@@ -65,6 +66,8 @@ def main():
             totalcount += result.get(timeout=1)
             
     print totalcount
+
+cProfile.run('print main(); print')
 
 if __name__ == "__main__":
     main()
