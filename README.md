@@ -8,7 +8,11 @@ For this code challenge, I modeled my solutions after Vijay Ramakrishnan's, whos
 
   b. A Query Server Program that reads in serialized D and then accepts user queries such that for each query s, it responds with the top 10 names (ranked by score) that start with s or contains ‘_s’ (so for example, both “revenue” and “yearly_revenue” match the prefix “rev”). Query answering should run in sub-linear time (in terms of the number of names in the input).
 
-Since I didn't program my solution in Java, I took a few liberties with the parameters of the question, namely interpreting the <string name, int score> pairs as Python tuples, as well as assuming that the list of tuples is comma-delimited. 
+2. You have a 100 GB text file and a Linux box with 4GB of RAM and 4 cores. Write a program/script that outputs a file listing the frequency of all words in the file (i.e. a TSV file with two columns <word, frequency>). Note that the set of words in the file may not fit in memory.
+
+---
+
+I took a few liberties with the parameters of the first question since I didn't write it in Java, namely interpreting the <string name, int score> pairs as Python tuples, as well as assuming that the list of tuples is comma-delimited. 
 
 I used an implementation of `StringTrie` from the `pyTrie` library in order to achieve sub-linear query answering, as well as the cPickle library for fast serialization of the trie. You'll need to run `pip install pytrie` for the program to work.
 
@@ -18,9 +22,9 @@ When prompted by the (Cmd) prompt, type in 'query <your query>' (without the sin
 
 This problem took me about 5 hours. 
 
-2. You have a 100 GB text file and a Linux box with 4GB of RAM and 4 cores. Write a program/script that outputs a file listing the frequency of all words in the file (i.e. a TSV file with two columns <word, frequency>). Note that the set of words in the file may not fit in memory.
+---
 
-For this problem, which took me about 4 hours, I decided to utilize Python's Multiprocessing library, one of the two available options for spawning multiple processes that Python's standard library offers (the other being the Threading library). The workflow I ended up going with was to have the `main()` function running on one processor, with the three other processors running the `processChunk()` function. 
+For the second problem, which took me about 4 hours, I decided to utilize Python's Multiprocessing library, one of the two available options for spawning multiple processes that Python's standard library offers (the other being the Threading library). The workflow I ended up going with was to have the `main()` function running on one processor, with the three other processors running the `processChunk()` function. 
 
 The `main()` function does the work of reading in chunks of the input file, keeping track of the how much of the input file has been read, and passing the chunks along to an available processor. Each `processChunk()` does the work of stripping out punctuation from the chunk, caching the words into a local Python dictionary, and then writing each key, value pair to our redis store once all the words from the chunk have been processed. 
 
