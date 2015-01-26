@@ -12,7 +12,9 @@ Since I didn't program my solution in Java, I took a few liberties with the para
 
 I used an implementation of `StringTrie` from the `pyTrie` library in order to achieve sub-linear query answering, as well as the cPickle library for fast serialization of the trie. You'll need to run `pip install pytrie` for the program to work.
 
-To run the code, first call `python indexing.py` to generate the `trie.pickle` file. Then call `python query_server.py`, which will prompt you to enter your query.
+To run the code, first call `python indexing.py` to generate the `trie.pickle` file. Then call `python query_server.py`, which will prompt you to enter your query. Delete the included `test.txt` file and rename your input file to `test.txt` to run the program with your own file.
+
+When prompted by the (Cmd) prompt, type in 'query <your query>' (without the single-quotes). The program doesn't handle errors particularly well. For instance, if there are fewer than 10 matching prefixes found in the trie, the program crashes. Control-D exits the prompt without throwing an ugly 'KeyboardInterrupt' message. 
 
 This problem took me about 5 hours. 
 
