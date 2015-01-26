@@ -8,8 +8,10 @@ def processChunk(inputstring):
     database = redis.StrictRedis(host='localhost', port=6379, db=0)
     cache = {}
     count = 0
+
     # Treat lower- and upper-case forms of a word as the same word
     inputstring = inputstring.lower()
+    
     # Removes all punctuation from our inputstring
     inputstring = inputstring.translate(None, string.punctuation)
     wordList = inputstring.split()
