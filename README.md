@@ -10,7 +10,11 @@ For this code challenge, I modeled my solutions after Vijay Ramakrishnan's, whos
 
 Since I didn't program my solution in Java, I took a few liberties with the parameters of the question, namely interpreting the <string name, int score> pairs as Python tuples, as well as assuming that the list of tuples is comma-delimited. 
 
-I used an implementation of `StringTrie` from the `pyTrie` library as my index structure and the cPickle library for fast serialization of the trie object. To run the code, you'll need to run `pip install pytrie`. 
+I used an implementation of `StringTrie` from the `pyTrie` library in order to achieve sub-linear query answering, as well as the cPickle library for fast serialization of the trie. You'll need to run `pip install pytrie` for the program to work.
+
+To run the code, first call `python indexing.py` to generate the `trie.pickle` file. Then call `python query_server.py`, which will prompt you to enter your query.
+
+This problem took me about 5 hours. 
 
 2. You have a 100 GB text file and a Linux box with 4GB of RAM and 4 cores. Write a program/script that outputs a file listing the frequency of all words in the file (i.e. a TSV file with two columns <word, frequency>). Note that the set of words in the file may not fit in memory.
 
