@@ -6,7 +6,7 @@ For this code challenge, I modeled my solutions after Vijay Ramakrishnan's, whos
 
   a. A construction program that produces an index structure D.
 
-  b. A Query Server Program that reads in serialized D and then accepts user queries such that for each query s, it responds with the top 10 names (ranked by score) that start with s or contains '_s' (so for example, both "revenue" and "yearly_revenue" match the prefix "rev"). Query answering should run in sub-linear time (in terms of the number of names in the input).
+  b. A query server program that reads in serialized D and then accepts user queries such that for each query s, it responds with the top 10 names (ranked by score) that start with s or contains '_s' (so for example, both "revenue" and "yearly_revenue" match the prefix "rev"). Query answering should run in sub-linear time (in terms of the number of names in the input).
 
 2. You have a 100 GB text file and a Linux box with 4GB of RAM and 4 cores. Write a program/script that outputs a file listing the frequency of all words in the file (i.e. a TSV file with two columns < word, frequency >). Note that the set of words in the file may not fit in memory.
 
