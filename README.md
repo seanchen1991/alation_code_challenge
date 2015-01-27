@@ -2,23 +2,23 @@
 
 For this code challenge, I modeled my solutions after Vijay Ramakrishnan's, whose code can be found [here](https://github.com/vijay120/Alation).
 
-1. Given a list of one million <string name, int score> pairs where names are valid Java variable names, write two programs and try to optimize their efficiency:
+1. Given a list of one million < string name, int score > pairs where names are valid Java variable names, write two programs and try to optimize their efficiency:
 
   a. A construction program that produces an index structure D.
 
-  b. A Query Server Program that reads in serialized D and then accepts user queries such that for each query s, it responds with the top 10 names (ranked by score) that start with s or contains ‘_s’ (so for example, both “revenue” and “yearly_revenue” match the prefix “rev”). Query answering should run in sub-linear time (in terms of the number of names in the input).
+  b. A Query Server Program that reads in serialized D and then accepts user queries such that for each query s, it responds with the top 10 names (ranked by score) that start with s or contains '_s' (so for example, both "revenue" and "yearly_revenue" match the prefix "rev"). Query answering should run in sub-linear time (in terms of the number of names in the input).
 
-2. You have a 100 GB text file and a Linux box with 4GB of RAM and 4 cores. Write a program/script that outputs a file listing the frequency of all words in the file (i.e. a TSV file with two columns <word, frequency>). Note that the set of words in the file may not fit in memory.
+2. You have a 100 GB text file and a Linux box with 4GB of RAM and 4 cores. Write a program/script that outputs a file listing the frequency of all words in the file (i.e. a TSV file with two columns < word, frequency >). Note that the set of words in the file may not fit in memory.
 
 ---
 
-I took a few liberties with the parameters of the first question since I didn't write it in Java, namely interpreting the <string name, int score> pairs as Python tuples, as well as assuming that the list of tuples is comma-delimited. 
+I took a few liberties with the parameters of the first question since I didn't write it in Java, namely interpreting the < string name, int score > pairs as Python tuples, as well as assuming that the list of tuples is comma-delimited. 
 
-I used an implementation of `StringTrie` from the `pyTrie` library in order to achieve sub-linear query answering, as well as the cPickle library for fast serialization of the trie. You'll need to run `pip install pytrie` for the program to work.
+I used an implementation of `StringTrie` from the `pyTrie` library in order to achieve O(log(n)) query answering, as well as the cPickle library for fast serialization of the trie. You'll need to run `pip install pytrie` for the program to work.
 
 To run the code, first call `python indexing.py` to generate the `trie.pickle` file. Then call `python query_server.py`, which will prompt you to enter your query. Delete the included `test.txt` file and rename your input file to `test.txt` to run the program with your own file.
 
-When prompted by the (Cmd) prompt, type in 'query <your query>' (without the single-quotes). The program doesn't handle errors particularly well. For instance, if there are fewer than 10 matching prefixes found in the trie, the program crashes. Control-D exits the prompt without throwing an ugly 'KeyboardInterrupt' message. 
+When prompted by the (Cmd) prompt, type in 'query < your query >' (without the single-quotes). The program doesn't handle errors particularly well. For instance, if there are fewer than 10 matching prefixes found in the trie, the program crashes. Control-D exits the prompt without throwing an ugly 'KeyboardInterrupt' message. 
 
 This problem took me about 5 hours. 
 
