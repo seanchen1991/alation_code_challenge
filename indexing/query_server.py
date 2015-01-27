@@ -58,8 +58,6 @@ class QueryHandler(cmd.Cmd):
             print "Please enter a valid query."
             return
 
-
-
     def do_EOF(self, line):
         return True
 

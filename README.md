@@ -30,6 +30,6 @@ The `main()` function does the work of reading in chunks of the input file, keep
 
 The redis store is persisted to disk and takes care of race conditions in the case that we have multiple processes writing to it at the same time. 
 
-In order to run the code, you'll need to have a redis server running on localhost:6379, as well as redis-rdb-tools installed, which can be found [here](https://github.com/sripathikrishnan/redis-rdb-tools). Once the program has completed, call `rdb --command json dump.rdb` from the redis-server directory in order to convert the dump.rdb binary into valid JSON. Don't forget to change the name of your input file to `data.txt` and make sure you spin up a new redis store.
+In order to run the code, you'll need to have a redis server running on localhost:6379, as well as redis-rdb-tools installed, which can be found [here](https://github.com/sripathikrishnan/redis-rdb-tools). Once the program has completed, call `rdb --command json dump.rdb` from the redis-server directory in order to convert the `dump.rdb` binary into valid JSON. Don't forget to change the name of your input file to `data.txt` and make sure you spin up a new redis store.
 
 The runtime of this program is O(n), since all operations are linear. Judging from the profile returned by cProfiler, calling Python's `lower()` to convert every word into lower-case and `translate()` to strip out all of the punctuation are relatively costly. C would undoubtedly handle it much faster.
