@@ -1,7 +1,5 @@
 # Alation Code Challenge
 
-For this code challenge, I modeled my solutions after Vijay Ramakrishnan's, whose code can be found [here](https://github.com/vijay120/Alation).
-
 1. Given a list of one million < string name, int score > pairs where names are valid Java variable names, write two programs and try to optimize their efficiency:
 
   a. A construction program that produces an index structure D.
